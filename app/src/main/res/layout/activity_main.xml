@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="mainViewModel"
+            type="com.vha.qwer.vm.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

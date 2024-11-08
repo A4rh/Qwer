@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainViewModel"
             type="com.vha.qwer.vm.MainViewModel" />
@@ -9,7 +12,302 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@mipmap/home_img_bg"
+            app:layout_constraintDimensionRatio="375:280"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_home_bird"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:src="@mipmap/ic_home_bird"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/ic_bg_bird_txt"
+                    android:gravity="center_vertical"
+                    android:paddingStart="7dp"
+                    android:text="Aquí tienes el préstamo\nque necesitas."
+                    android:textColor="#333333"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_home_bird"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_home_bird"
+                    app:layout_constraintTop_toTopOf="@+id/iv_home_bird" />
+
+                <ImageView
+                    android:id="@+id/iv_home_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19.5dp"
+                    android:layout_marginTop="33.5dp"
+                    android:src="@mipmap/ic_home_money"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9.5dp"
+                    android:text="El límite máximo"
+                    android:textColor="#505050"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/iv_home_money"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_home_money" />
+
+                <TextView
+                    android:id="@+id/tv_text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="$"
+                    android:textColor="#080A07"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_text_4"
+                    app:layout_constraintStart_toStartOf="@+id/tv_text_2" />
+
+                <TextView
+                    android:id="@+id/tv_text_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="5dp"
+                    android:text="20000"
+                    android:textColor="#080A07"
+                    android:textSize="40sp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_text_3"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_2" />
+
+                <TextView
+                    android:id="@+id/tv_text_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8.5dp"
+                    android:text="Interés"
+                    android:textColor="#505050"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_text_2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_4" />
+
+                <TextView
+                    android:id="@+id/tv_text_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginTop="8.5dp"
+                    android:text="Plazo"
+                    android:textColor="#505050"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_text_5"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_4" />
+
+                <TextView
+                    android:id="@+id/tv_text_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="0.08%"
+                    android:textColor="#000202"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_text_5"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_5" />
+
+                <TextView
+                    android:id="@+id/tv_text_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="7-94 Dias%"
+                    android:textColor="#000202"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_text_6"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_6" />
+
+                <ImageView
+                    android:id="@+id/iv_zp_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="-40dp"
+                    android:src="@mipmap/img_zp_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_1" />
+
+                <ImageView
+                    android:id="@+id/iv_zp_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:src="@mipmap/img_zp_2"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_zp_3"
+                    app:layout_constraintStart_toStartOf="@+id/iv_zp_3"
+                    app:layout_constraintTop_toTopOf="@+id/iv_zp_3" />
+
+                <ImageView
+                    android:id="@+id/iv_zp_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:src="@mipmap/img_zp_1"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_zp_2"
+                    app:layout_constraintStart_toStartOf="@+id/iv_zp_2"
+                    app:layout_constraintTop_toTopOf="@+id/iv_zp_2" />
+
+                <TextView
+                    android:id="@+id/tv_text_9"
+                    android:layout_width="167.5dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="212dp"
+                    android:background="@drawable/shape_bg_1"
+                    android:gravity="center"
+                    android:text="Aplicar Ahora"
+                    android:textColor="#FFE846"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="36.5dp"
+                    android:background="#E6E6E6"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_9" />
+
+                <CheckBox
+                    android:id="@+id/check_box"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginStart="22.5dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/selector_bg_check_box_1"
+                    android:button="@null"
+                    android:checked="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_1" />
+
+                <TextView
+                    android:id="@+id/tv_text_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7.5dp"
+                    android:text="Francisco"
+                    android:textColor="#010002"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/check_box"
+                    app:layout_constraintStart_toEndOf="@+id/check_box"
+                    app:layout_constraintTop_toTopOf="@+id/check_box" />
+
+                <TextView
+                    android:id="@+id/tv_text_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3.5dp"
+                    android:text="Préstamo Aprobado"
+                    android:textColor="#010002"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/check_box"
+                    app:layout_constraintStart_toEndOf="@+id/tv_text_10"
+                    app:layout_constraintTop_toTopOf="@+id/check_box" />
+
+                <TextView
+                    android:id="@+id/tv_text_12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22.5dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="29dp"
+                    android:text="Ya son 245234 personas que han obtenido con éxito su préstamo."
+                    android:textColor="#010002"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/check_box" />
+
+                <View
+                    android:id="@+id/line_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="21dp"
+                    android:background="#E6E6E6"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_12" />
+
+                <ImageView
+                    android:id="@+id/iv_banner"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@mipmap/home_img_banner"
+                    app:layout_constraintDimensionRatio="335:82"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_2" />
+
+                <TextView
+                    android:id="@+id/tv_text_13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="28dp"
+                    android:text="Cómo usar el dinero"
+                    android:textColor="#080A07"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_banner" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_text_13"
+                    app:spanCount="4"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/item_home_gridlist" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

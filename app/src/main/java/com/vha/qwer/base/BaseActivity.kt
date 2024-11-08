@@ -49,24 +49,36 @@ abstract class BaseActivity: AppCompatActivity() {
         setImmersiveDarkMode()
     }
 
-    protected fun showFragment(fragment: Fragment) {
-        if (fragment == currentFragment) {
-            MyLog.d("fragment added: $fragment")
+    protected open fun switchFragment(clazz: Class<out Fragment?>?) {
+        if (clazz == null) {
             return
         }
-        if (fragment.isAdded) {
-            supportFragmentManager.beginTransaction().show(fragment).commit()
-            MyLog.d("fragment show $fragment")
-        } else {
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
-            MyLog.d("fragment add $fragment")
-        }
-        currentFragment?.let {
-            if (!it.isHidden) {
-                supportFragmentManager.beginTransaction().hide(fragment).commit()
+        val fragmentName = clazz.name
+        val fm = supportFragmentManager
+        val ft = fm.beginTransaction()
+        var userFragment = fm.findFragmentByTag(fragmentName)
+        if (userFragment == null) {
+            try {
+                userFragment = clazz.newInstance()
+            } catch (e: InstantiationException) {
+                e.printStackTrace()
+            } catch (e: IllegalAccessException) {
+                e.printStackTrace()
             }
         }
-        currentFragment = fragment
+        if (userFragment == null) {
+            throw NullPointerException("$fragmentName have no parameterless constructor")
+        }
+        if (currentFragment != null && currentFragment !== userFragment) {
+            ft.hide(currentFragment!!)
+        }
+        if (!userFragment.isAdded) {
+            ft.add(R.id.fragment_container, userFragment, fragmentName)
+        } else {
+            ft.show(userFragment)
+        }
+        ft.commitAllowingStateLoss()
+        currentFragment = userFragment
     }
 
     /**
